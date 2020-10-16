@@ -2,8 +2,18 @@ require('dotenv').load()
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
+const getDateString = () => {
+    let date = new Date()
+    return `${date.getDate().toString().padStart(2, '0')}.` +
+      `${(date.getMonth() + 1).toString().padStart(2, '0')}.` +
+      `${date.getFullYear()} ` +
+      `${date.getHours().toString().padStart(2, '0')}:` +
+      `${date.getMinutes().toString().padStart(2, '0')}:` +
+      `${date.getSeconds().toString().padStart(2, '0')}`
+}
+
 client.on('ready', () => {
-  console.log(`[Info] Logged in as ${client.user.tag}!`)
+  console.log(`[${getDateString()}][Info] Logged in as ${client.user.tag}!`)
 })
 
 client.on('message', msg => {
@@ -12,14 +22,13 @@ client.on('message', msg => {
     const botMessage = msg.embeds[0].description
     const [trick, treat] = ['h!trick','h!treat']
 
-    console.log(`[Received] ${botMessage}`)
     if (botMessage.includes(treat)) {
       msg.channel.send(treat)
-      console.log(`[Sent] ${treat} in ${msg.guild.name}`)
+      console.log(`[${getDateString()}][Info] Sent ${treat} in ${msg.guild.name} (${botMessage})`)
     }
     else if (botMessage.includes(trick)) {
       msg.channel.send(trick)
-      console.log(`[Sent] ${trick} in ${msg.guild.name}`)
+      console.log(`[${getDateString()}][Info] Sent ${trick} in ${msg.guild.name} (${botMessage})`)
     }
   }
 })
