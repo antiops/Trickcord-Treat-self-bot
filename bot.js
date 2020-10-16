@@ -22,13 +22,14 @@ client.on('message', msg => {
     const botMessage = msg.embeds[0].description
     const [trick, treat] = ['h!trick','h!treat']
 
+    console.log(`[${getDateString()}][Info] New message in server: ${msg.guild.name} (${botMessage})`)
     if (botMessage.includes(treat)) {
       msg.channel.send(treat)
-      console.log(`[${getDateString()}][Info] Sent ${treat} in ${msg.guild.name} (${botMessage})`)
+      console.log(`[${getDateString()}][Info] Sent ${treat} in channel: #${msg.channel.name}`)
     }
     else if (botMessage.includes(trick)) {
       msg.channel.send(trick)
-      console.log(`[${getDateString()}][Info] Sent ${trick} in ${msg.guild.name} (${botMessage})`)
+      console.log(`[${getDateString()}][Info] Sent ${trick} in channel: #${msg.channel.name}`)
     }
   }
 })
