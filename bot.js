@@ -15,11 +15,11 @@ client.on('message', msg => {
     console.log(`[Received] ${botMessage}`)
     if (botMessage.includes(treat)) {
       msg.channel.send(treat)
-      console.log(`[Sent] ${treat}`)
+      console.log(`[Sent] ${treat} in ${msg.guild.name}`)
     }
     else if (botMessage.includes(trick)) {
       msg.channel.send(trick)
-      console.log(`[Sent] ${trick}`)
+      console.log(`[Sent] ${trick} in ${msg.guild.name}`)
     }
   }
 })
