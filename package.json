@@ -1,0 +1,24 @@
+{
+  "name": "Trickcord-Treat-auto-bot",
+  "version": "1.0.0",
+  "description": "Bot that automatically sends the correct trick or treat to Discords Halloween bot, Trick'cord Treat",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "dotenv": "^5.0.1"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://github.com/antiops/Trickcord-Treat-auto-bot"
+  },
+  "license": "AGPLv3",
+  "keywords": [
+    "node",
+    "discord",
+    "halloween"
+  ]
+}
