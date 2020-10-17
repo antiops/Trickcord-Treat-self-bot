@@ -10,7 +10,11 @@ const getDateString = () => {
       `${date.getHours().toString().padStart(2, '0')}:` +
       `${date.getMinutes().toString().padStart(2, '0')}:` +
       `${date.getSeconds().toString().padStart(2, '0')}.` +
-      `${date.getMilliseconds().toString().padStart(2, '0')}`
+      `${date.getMilliseconds().toString().padStart(3, '0')}`
+}
+
+const msleep = (n) => {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n)
 }
 
 client.on('ready', () => {
@@ -22,16 +26,22 @@ client.on('message', msg => {
   if (msg.author.id === '755580145078632508') {
     if (msg.guild.id === process.env.SERVER) {
       const botMessage = msg.embeds[0].description
-      const [trick, treat] = ['h!trick','h!treat']
+      const [sleepMin, sleepMax] = [1000, 2000] // Typing sleep delay (Looks more legit)
+      const [trick, treat] = ['h!trick', 'h!treat']
+      let randomSleep = Math.floor(Math.random() * (sleepMax - sleepMin) + sleepMin)
 
       console.log(`[${getDateString()}][Info] New message in server: ${msg.guild.name} (${botMessage})`)
       if (botMessage.includes(treat)) {
-        msg.channel.send(treat)
-        console.log(`[${getDateString()}][Info] Sent ${treat} in channel: ${msg.channel.name}`)
+        msg.channel.startTyping()
+        msleep(randomSleep)
+        msg.channel.send(treat).then(msg => msg.channel.stopTyping())
+        return console.log(`[${getDateString()}][Info] Sent ${treat} in channel: ${msg.channel.name} after ${randomSleep}ms`)
       }
       else if (botMessage.includes(trick)) {
-        msg.channel.send(trick)
-        console.log(`[${getDateString()}][Info] Sent ${trick} in channel: #${msg.channel.name}`)
+        msg.channel.startTyping()
+        msleep(randomSleep)
+        msg.channel.send(trick).then(msg => msg.channel.stopTyping())
+        return console.log(`[${getDateString()}][Info] Sent ${trick} in channel: #${msg.channel.name} after ${randomSleep}ms`)
       }
     }
   }
