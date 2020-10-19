@@ -4,6 +4,7 @@ const client = new Discord.Client()
 
 const config = {
   targetServer: process.argv[2] || process.env.SERVER,
+  sendReplies: process.argv[3] || false,
   sleepMin: 1000, // Min & Max amount of time in ms to wait before sending reply
   sleepMax: 1750
 }
@@ -31,7 +32,8 @@ client.on('ready', () => {
   console.log(`[${timestamp()}][Info] Logged in as ${client.user.tag}!`)
 })
 
-client.on('messageUpdate', (msgOld, msgNew) => {
+if (config.sendReplies) {
+  client.on('messageUpdate', (msgOld, msgNew) => {
   if (run) return
   if (msgNew.author.id === '755580145078632508') {
     msleep(Math.floor(Math.random() * (config.sleepMax - config.sleepMin) + config.sleepMin))
@@ -42,6 +44,8 @@ client.on('messageUpdate', (msgOld, msgNew) => {
     }
   }
 })
+}
+
 
 client.on('message', msg => {
   // ID of Trick'cord Treat#1944
