@@ -4,7 +4,7 @@ const client = new Discord.Client()
 
 const config = {
   targetServer: process.argv[2] || process.env.SERVER,
-  sendReplies: process.argv[3] || false,
+  sendReplies: process.env.REPLY || false,
   sleepMin: 1000, // Min & Max amount of time in ms to wait before sending reply
   sleepMax: 1750
 }
