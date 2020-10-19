@@ -1,4 +1,4 @@
-# Trickcord-Treat-auto-bot
+# Trickcord-Treat-self-bot
 Bot that automatically sends the correct trick or treat to Discords Halloween bot, Trick'cord Treat
 
 It's made to look kinda legit. It waits a small amount of time after the bot spawns and it makes it look like you're typing to others. The bot can also automatically send replies based on wether you won the roll or lost, though only tested on servers that I have full permissions on. The `messageUpdate` event may require extra perms.
