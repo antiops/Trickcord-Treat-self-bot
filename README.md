@@ -27,5 +27,5 @@ Open `bot.js` in a text editor to change these options
 
 
 ### Notes
-- This is a self bot
+- This is a self bot and it is against Discord TOS. If Discord catches you using one or someone reports you for using it, you run the risk of being service banned.
 - Bot has no timeout
